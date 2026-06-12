@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Proxy;
 use Illuminate\Database\Seeder;
 
-class Proxy extends Seeder
+class ProxySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class Proxy extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Proxy::factory(10)->create();
+        Proxy::factory(10)->create();
     }
 }

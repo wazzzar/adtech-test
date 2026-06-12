@@ -44,10 +44,10 @@ const proxy = props.proxy;
         <td v-show="!editMode">{{ proxy.name }}</td>
         <td v-show="!editMode">{{ proxy.address }}</td>
         <td v-show="editMode">
-            <input required name="name" type="text" v-model="proxy.name" class="form-control"/>
+            <input required type="text" v-model="proxy.name" class="form-control"/>
         </td>
         <td v-show="editMode">
-            <input required name="name" type="text" v-model="proxy.address" class="form-control"/>
+            <input required type="text" v-model="proxy.address" class="form-control"/>
         </td>
         <td>
             <a href="#" @click.prevent.stop="toggleStatus(proxy)"

@@ -15,8 +15,8 @@ class Proxy extends Migration
     {
         Schema::create('proxies', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128);
-            $table->string('address', 15);
+            $table->string('name', 128)->unique()->index();
+            $table->ipAddress('address')->unique()->index();
             $table->string('status', 16)->default('inactive'); // тут должен быть int и внешний ключ на таблицу статусов (поидеи)
             $table->timestamps();
         });
