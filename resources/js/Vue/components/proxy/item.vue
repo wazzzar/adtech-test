@@ -39,7 +39,6 @@ const proxy = props.proxy;
 </script>
 
 <template>
-    <form action="#" id="editForm"></form>
     <tr>
         <td>{{ proxy.id }}</td>
         <td v-show="!editMode">{{ proxy.name }}</td>
