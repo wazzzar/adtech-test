@@ -13,7 +13,7 @@ class ProxyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,16 @@ class ProxyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:128',
-            'address' => 'required|string|max:15',
+            'name' => 'required|string|min:1|max:128',
+            'address' => 'required|ipv4',
+            'status' => 'string|max:16',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => empty($this->status) ? 'inactive' : $this->status,
+        ]);
     }
 }

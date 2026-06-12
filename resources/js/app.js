@@ -1,11 +1,9 @@
 import { createApp } from 'vue';
-import proxyComponent from './components/test.vue';
+import App from './vue/app.vue';
 
 console.log('Vue app starting...');
-console.log('proxyComponent:', proxyComponent);
-
-const app = createApp(proxyComponent);
-app.mount(document.querySelector('#app'));
+const app = createApp(App);
+app.mount('#app');
 app.config.errorHandler = (err) => {
     console.error(err);
 }

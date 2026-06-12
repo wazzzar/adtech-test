@@ -1,1 +1,14 @@
 @import './normalize.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+a.bi {
+    text-decoration: none;
+}
+a.bi-circle {
+    color: gray;
+}
+a.bi-circle-fill {
+    color: green;
+}

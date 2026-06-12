@@ -11,13 +11,13 @@ class Proxy extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('proxies', function (Blueprint $table) {
             $table->id();
             $table->string('name', 128);
             $table->string('address', 15);
-            $table->string('status', 16); // тут должен быть int и внешний ключ на таблицу статусов (поидеи)
+            $table->string('status', 16)->default('inactive'); // тут должен быть int и внешний ключ на таблицу статусов (поидеи)
             $table->timestamps();
         });
     }

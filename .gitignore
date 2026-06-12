@@ -2,8 +2,9 @@
 /.vscode
 /.osp
 /node_modules
-/public/hot
 /public/build
+/public/fonts/vendor
+/public/hot
 /public/storage
 /public/mix-manifest.json
 /resources/js/components/test*
