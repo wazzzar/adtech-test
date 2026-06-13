@@ -7,8 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 class ProxyRequest extends FormRequest
 {
     private array $rules = [
-        'name' => 'required|string|min:1|max:128|unique:proxies',
-        'address' => 'required|ipv4|unique:proxies',
+        'name' => 'string|min:1|max:128|unique:proxies',
+        'address' => 'ipv4|unique:proxies',
         'status' => 'string|max:16',
     ];
 
@@ -37,12 +37,5 @@ class ProxyRequest extends FormRequest
         $this->merge([
             'status' => empty($this->status) ? 'inactive' : $this->status,
         ]);
-        // onupdate
-        if (request()->has('name') && request()->input('name') == $this->name) {
-            unset($this->rules['name']);
-        }
-        if (request()->has('address') && request()->input('address') == $this->address) {
-            unset($this->rules['address']);
-        }
     }
 }

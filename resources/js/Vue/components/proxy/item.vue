@@ -16,7 +16,7 @@ function toggleStatus(proxy) {
             return true;
         }
         alert(response.statusText);
-    }, { ...proxy, 'status': status });
+    }, { 'status': status });
 }
 
 let editMode = ref(false);
