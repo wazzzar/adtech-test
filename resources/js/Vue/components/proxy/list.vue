@@ -11,7 +11,7 @@ const _axios = axios.create({
     }
 });
 
-const proxyReq = (method, url, success, failed = null, data = null) => {
+const proxyReq = (method, url, success, data = null) => {
     _axios({
         method: method,
         url: url,
@@ -19,12 +19,18 @@ const proxyReq = (method, url, success, failed = null, data = null) => {
     }).then((response) => {
         success(response);
     }).catch((error) => {
-        if (typeof failed === 'function') {
-            failed(error);
-        }
-        console.error(error);
+        alert(makeErrorText(error));
     });
 };
+
+function makeErrorText(error) {
+    let errors = error.response.data.errors ?? [];
+    let text = error.response.data.message ?? '';
+    for (let error in errors) {
+        text += '\n'+ errors[error][0];
+    }
+    return text;
+}
 
 let interval = null;
 onMounted(() => {
@@ -49,8 +55,6 @@ function addProxy() {
             return true;
         }
         alert(response.statusText);
-    }, (error) => {
-        alert(error);
     }, new FormData(addForm.value));
 }
 

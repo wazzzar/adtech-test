@@ -4,7 +4,7 @@ defineEmits(['delete'])
 
 /**
  * @props->proxy - item
- * @props->proxyReq - fn(method, url, success, failed = null, data = null)
+ * @props->proxyReq - fn(method, url, success, data = null)
  */
 const props = defineProps(['proxy', 'proxyReq']);
 
@@ -16,8 +16,6 @@ function toggleStatus(proxy) {
             return true;
         }
         alert(response.statusText);
-    }, (error) => {
-        alert(error);
     }, { ...proxy, 'status': status });
 }
 
@@ -30,8 +28,6 @@ function edit(proxy) {
             return true;
         }
         alert(response.statusText);
-    }, (error) => {
-        alert(error);
     }, proxy);
 }
 

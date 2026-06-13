@@ -6,6 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProxyRequest extends FormRequest
 {
+    private array $rules = [
+        'name' => 'required|string|min:1|max:128|unique:proxies',
+        'address' => 'required|ipv4|unique:proxies',
+        'status' => 'string|max:16',
+    ];
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,11 +29,7 @@ class ProxyRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|min:1|max:128',
-            'address' => 'required|ipv4',
-            'status' => 'string|max:16',
-        ];
+        return $this->rules;
     }
 
     protected function prepareForValidation(): void
@@ -35,5 +37,12 @@ class ProxyRequest extends FormRequest
         $this->merge([
             'status' => empty($this->status) ? 'inactive' : $this->status,
         ]);
+        // onupdate
+        /*if (request()->has('name') && request()->input('name') == $this->name) {
+            unset($this->rules['name']);
+        }
+        if (request()->has('address') && request()->input('address') == $this->address) {
+            unset($this->rules['address']);
+        }*/
     }
 }
