@@ -38,11 +38,11 @@ class ProxyRequest extends FormRequest
             'status' => empty($this->status) ? 'inactive' : $this->status,
         ]);
         // onupdate
-        /*if (request()->has('name') && request()->input('name') == $this->name) {
+        if (request()->has('name') && request()->input('name') == $this->name) {
             unset($this->rules['name']);
         }
         if (request()->has('address') && request()->input('address') == $this->address) {
             unset($this->rules['address']);
-        }*/
+        }
     }
 }
